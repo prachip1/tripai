@@ -139,105 +139,116 @@ export default function CreateTrip() {
   };
 
   return (
-    <div className="h-screen sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-10 flex flex-col justify- items-center">
-      <h2 className="font-bold text-3xl">Tell Us your travel preference</h2>
-      <p className="mt-3 text-gray-500 text-xl">Just provide some info</p>
+    <div className="flex w-full justify-between gap-8 sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-10">
+  
+  {/* Image Section */}
+  <div className="flex-1 h-auto">
+  <p className="mt-3 text-black text-2xl font-semibold -ml-16">Please provide us some details 👉🏼</p>
+    <img src="/create-cover-1.svg" alt="Pattern" className="w-full -ml-52 mt-28 object-contain" />
+  </div>
+  
+  {/* Form Section */}
+  <div className="flex-1 flex flex-col">
+   
 
-      <div className="mt-20 flex flex-col gap-12">
-        <div>
-          <h2 className="text-xl my-3 font-medium">Choose any Destination?</h2>
-          <GooglePlacesAutocomplete
-            apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}
-            selectProps={{
-              place,
-              onChange: (v) => {
-                setPlace(v);
-                handleInput("location", v);
-              },
-            }}
-          />
-        </div>
-
-        <div>
-          <h2 className="text-xl my-3 font-medium">For how many days?</h2>
-          <Input
-            placeholder="Ex. 2"
-            type="number"
-            onChange={(e) => handleInput("noOfDays", e.target.value)}
-          />
-        </div>
-
-        <div>
-          <h2 className="text-xl my-3 font-medium">Let us know your budget for this trip.</h2>
-          <p>
-            This way we can suggest you the exact trip which is wallet-friendly to you.
-          </p>
-
-          <div className="flex justify-between gap-8">
-            {BudgetData.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => handleInput("budget", item.title)}
-                className={`mt-12 border rounded-md p-6 
-                  hover:shadow-lg cursor-pointer
-                  ${formData?.budget === item.title && "shadow-lg border-black"}`}
-              >
-                <h2 className="text-4xl">{item.icon}</h2>
-                <h2 className="text-xl font-semibold">{item.title}</h2>
-                <h2 className="font-normal">{item.desc}</h2>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h2 className="text-xl my-3 font-medium">How are you travelling?</h2>
-
-          <div className="flex justify-between gap-8">
-            {TravelPartnerData.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => handleInput("noOfTraveler", item.people)}
-                className={`mt-12 border rounded-md p-6 
-                  hover:shadow-lg cursor-pointer
-                  ${formData?.noOfTraveler === item.people && "shadow-lg border-black"}`}
-              >
-                <h2 className="text-4xl">{item.icon}</h2>
-                <h2 className="text-xl font-semibold">{item.title}</h2>
-                <h2 className="font-normal">{item.desc}</h2>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    <div className="mt-4 flex flex-col gap-8">
       <div>
-        <Button disabled={loading} onClick={generateTrip} className="mt-8 mb-12">
-          {loading ? (
-            <AiOutlineLoading3Quarters className="h-7 w-7 animate-spin" />
-          ) : (
-            "Generate a trip"
-          )}
-        </Button>
+        <h2 className="text-md font-medium">Choose any Destination?</h2>
+        <GooglePlacesAutocomplete
+          apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}
+          selectProps={{
+            place,
+            onChange: (v) => {
+              setPlace(v);
+              handleInput("location", v);
+            },
+          }}
+        />
       </div>
 
-      <Dialog open={openDialog}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Sign in to generate your trip</DialogTitle>
-            <DialogDescription>
-              <img src="./logo.svg" alt="Logo" />
+      <div>
+        <h2 className="text-md font-medium">For how many days?</h2>
+        <Input
+          placeholder="Keep it below or equal to 5 days"
+          type="number"
+          onChange={(e) => handleInput("noOfDays", e.target.value)}
+        />
+      </div>
 
-              <Button
-                disabled={loading}
-                onClick={login}
-                className="w-full mt-5 flex gap-5"
-              >
-                <FcGoogle className="h-5 w-5" /> Sign in with Google
-              </Button>
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
+      <div>
+        <h2 className="text-md font-medium">Let us know your budget for this trip.</h2>
+      
+
+        <div className="flex flex-col justify-between gap-2">
+          {BudgetData.map((item) => (
+            <div
+              key={item.id}
+              onClick={() => handleInput("budget", item.title)}
+              className={`p-4 border rounded-md flex items-center gap-2
+                hover:shadow-lg cursor-pointer hover:bg-gray-200
+                ${formData?.budget === item.title && "shadow-lg border-black"}`}
+            >
+              <p>{item.icon}</p>
+             
+              <h2 className="text-sm font-normal tracking-wide">{item.desc}</h2>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h2 className="text-md font-medium">How are you travelling?</h2>
+
+        <div className="flex flex-col justify-between gap-2">
+          {TravelPartnerData.map((item) => (
+            <div
+              key={item.id}
+              onClick={() => handleInput("noOfTraveler", item.people)}
+              className={`p-4 border rounded-md flex items-center gap-2
+                hover:shadow-lg cursor-pointer hover:bg-gray-200
+                ${formData?.noOfTraveler === item.people && "shadow-lg border-black"}`}
+            >
+             
+              <p>{item.icon}</p>
+              <h2 className="text-sm font-normal tracking-wide">{item.desc}</h2>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
+
+    <div>
+      <Button disabled={loading} onClick={generateTrip} className="mt-8 mb-12">
+        {loading ? (
+          <AiOutlineLoading3Quarters className="h-7 w-7 animate-spin" />
+        ) : (
+          "Generate a trip"
+        )}
+      </Button>
+    </div>
+
+    <Dialog open={openDialog}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Sign in to generate your trip</DialogTitle>
+          <DialogDescription>
+            <img src="./logo.svg" alt="Logo" />
+
+            <Button
+              disabled={loading}
+              onClick={login}
+              className="w-full mt-5 flex gap-5"
+            >
+              <FcGoogle className="h-5 w-5" /> Sign in with Google
+            </Button>
+          </DialogDescription>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+  </div>
+</div>
+
+
+  
   );
 }
