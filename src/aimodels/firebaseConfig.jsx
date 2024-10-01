@@ -6,12 +6,12 @@ import {getFirestore} from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB8Wxmss_1NsBUZKpa1MFm93g1EEPTkOfc",
-  authDomain: "aitripplanner-d75bc.firebaseapp.com",
-  projectId: "aitripplanner-d75bc",
-  storageBucket: "aitripplanner-d75bc.appspot.com",
-  messagingSenderId: "237112620391",
-  appId: "1:237112620391:web:34ce62e31fbb371c9aebc2"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId:import.meta.env.VITE_FIREBASE_MESSAGE_SENDING_ID ,
+  appId:import.meta.env.VITE_FIREBASE_APP_ID 
 };
 
 // Initialize Firebase
