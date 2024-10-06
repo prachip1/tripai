@@ -20,10 +20,10 @@ useEffect(()=>{
     }
 
     const result=await GetPlaceDetails(data).then(res=>{
-      console.log(res.data.places[0].photos[3].name);
+      //console.log(res.data.places[0].photos[3].name);
 
       const PhotoUrl=PHOTO_REF_URL.replace('{NAME}',res.data.places[0].photos[3].name);
-      console.log(PhotoUrl);
+      //console.log(PhotoUrl);
       setPhotoUrl(PhotoUrl)
     })
   }
@@ -41,7 +41,7 @@ useEffect(()=>{
         target="_blank"
       >
         <div className="my-2 flex flex-col gap-2 hover:scale-105 cursor-pointer transition-all">
-          <img src={photoUrl} className="rounded-xl h-[200px] w-full object-cover" />
+          <img src={photoUrl?photoUrl:'/placeholder.jpg'} className="rounded-xl h-[200px] w-full object-cover" />
 
           <div>
             <h2 className="font-medium text-lg">{hotel?.HotelName}</h2>

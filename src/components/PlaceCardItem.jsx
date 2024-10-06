@@ -22,10 +22,10 @@ export default function PlaceCardItem({trip,partOfDay,idx,day,index}) {
       }
   
       const result=await GetPlaceDetails(data).then(res=>{
-        console.log(res.data.places[0].photos[3].name);
+        //console.log(res.data.places[0].photos[3].name);
   
         const PhotoUrl=PHOTO_REF_URL.replace('{NAME}',res.data.places[0].photos[3].name);
-        console.log(PhotoUrl);
+        //console.log(PhotoUrl);
         setPhotoUrl(PhotoUrl)
       })
     }
@@ -37,7 +37,7 @@ export default function PlaceCardItem({trip,partOfDay,idx,day,index}) {
                   <div key={idx} className='flex flex-col shadow-md p-4 gap-4 rounded-xl border border-gray-200 hover:scale-105 transition-all hover:shadow-xl cursor-pointer'>
                     <h3 className="font-semibold capitalize">{partOfDay}</h3>
                     <div className="flex flex-col gap-2">
-                      <img src={photoUrl} className='rounded-xl w-[130px] h-[130px]'/>
+                      <img src={photoUrl?photoUrl:'/placeholder.jpg'} className='rounded-xl w-[130px] h-[130px] object-cover'/>
                       <h3 className="font-semibold">{itinerary[day][partOfDay]?.placeName}</h3>
                       <p>{itinerary[day][partOfDay]?.placeDetails}</p>
                     
