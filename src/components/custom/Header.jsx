@@ -58,7 +58,7 @@ const user = JSON.parse(localStorage.getItem("user"));
     <div className="p-3 flex justify-between shadow-sm items-center px-5">
       <div className="flex items-center gap-2">
       {/*<img src="/logo.svg" /> */}
-        <p className="font-bold"><span className="text-3xl">🏜️</span><br></br>TripAI</p>
+    <a href="/"><p className="font-bold"><span className="text-3xl">🏜️</span><br></br>TripAI</p></a> 
       </div>
 
       <div>
