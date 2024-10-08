@@ -174,7 +174,7 @@ export default function CreateTrip() {
           onChange={(e) => handleInput("noOfDays", e.target.value)}
         />
       </div>
-<div className="flex gap-8 w-full">
+
 
 
       <div className="flex flex-col gap-4 text-base">
@@ -198,8 +198,8 @@ export default function CreateTrip() {
         </div>
       </div>
 
-      <div>
-        <h2 className="text-md font-medium">How are you travelling?</h2>
+      <div className="flex flex-col gap-4 text-base">
+        <h2 className="text-lg font-medium">How are you travelling?</h2>
 
         <div className="flex flex-col justify-between gap-2">
           {TravelPartnerData.map((item) => (
@@ -217,7 +217,7 @@ export default function CreateTrip() {
           ))}
         </div>
       </div>
-      </div>
+      
     </div>
 
     <div>
