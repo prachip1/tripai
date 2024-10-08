@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 
 export default function Hero() {
   return (
-    <div className='flex flex-col items-center mx-56 gap-9'>
-      <h2 className='text-center font-extrabold text-[55px] mt-16'><span className='text-indigo-800'>AI Trip Planner for your</span>
-        <span className='text-[42px] font-extrabold'> <br></br>personalized itenaries.</span></h2>
-           <p className='text-xl text-center'>Plan your next trip with the help of AI and zero the chance of missing out on the places.</p>
+    <div className='flex flex-col items-center justify-center mt-36 gap-6'>
+      <h2 className='text-center font-extrabold text-[55px] text-gray-800 tracking-tighter'>AI Trip Planner for your</h2>
+       <h2 className='text-[55px] font-extrabold -mt-8 text-gray-800 tracking-tighter'> personalized itenaries.</h2>
+           <p className='text-lg text-center text-gray-600'>Plan your next trip with an AI and never miss a place again.</p>
           
-          <Link to={'/create-trip'}> <Button>Get Started.</Button></Link>
+          <Link to={'/create-trip'}> <Button className="bg-yellow-500 border border-gray-600 hover:scale-110 hover:bg-yellow-300 p-6 w-64 text-gray-800 text-md">🚀 Get Started.</Button></Link>
     </div>
   )
 }

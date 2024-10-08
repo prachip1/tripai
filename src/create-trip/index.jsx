@@ -144,7 +144,7 @@ export default function CreateTrip() {
   {/* Image Section */}
   <div className="flex-1 h-auto">
   <p className="mt-3 text-black text-2xl font-semibold -ml-16">Please provide us some details 👉🏼</p>
-    <img src="/create-cover-1.svg" alt="Pattern" className="w-full -ml-52 mt-28 object-contain" />
+    <img src="/create-cover-1.svg" alt="Pattern" className="w-full -ml-52 mt-20 object-contain h-1/2" />
   </div>
   
   {/* Form Section */}
@@ -152,9 +152,9 @@ export default function CreateTrip() {
    
 
     <div className="mt-4 flex flex-col gap-8">
-      <div>
-        <h2 className="text-md font-medium">Choose any Destination?</h2>
-        <GooglePlacesAutocomplete
+      <div className="flex flex-col gap-4 text-base">
+        <h2 className="text-lg font-medium">Choose any Destination?</h2>
+        <GooglePlacesAutocomplete 
           apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}
           selectProps={{
             place,
@@ -166,17 +166,19 @@ export default function CreateTrip() {
         />
       </div>
 
-      <div>
-        <h2 className="text-md font-medium">For how many days?</h2>
+      <div className="flex flex-col gap-4 text-base">
+        <h2 className="text-lg font-medium">For how many days?</h2>
         <Input
           placeholder="Keep it below or equal to 5 days"
           type="number"
           onChange={(e) => handleInput("noOfDays", e.target.value)}
         />
       </div>
+<div className="flex gap-8 w-full">
 
-      <div>
-        <h2 className="text-md font-medium">Let us know your budget for this trip.</h2>
+
+      <div className="flex flex-col gap-4 text-base">
+        <h2 className="text-lg font-medium">Let us know your budget for this trip.</h2>
       
 
         <div className="flex flex-col justify-between gap-2">
@@ -215,10 +217,11 @@ export default function CreateTrip() {
           ))}
         </div>
       </div>
+      </div>
     </div>
 
     <div>
-      <Button disabled={loading} onClick={generateTrip} className="mt-8 mb-12">
+      <Button disabled={loading} onClick={generateTrip} className="rounded-full bg-yellow-500 hover:bg-yellow-400 border border-gray-700 text-gray-700 mt-8 mb-12">
         {loading ? (
           <AiOutlineLoading3Quarters className="h-7 w-7 animate-spin" />
         ) : (

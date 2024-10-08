@@ -57,21 +57,21 @@ const user = JSON.parse(localStorage.getItem("user"));
   return (
     <div className="p-3 flex justify-between shadow-sm items-center px-5">
       <div className="flex items-center gap-2">
-        <img src="/logo.svg" />
-        <p className="font-bold text-indigo-700">TripAI</p>
+      {/*<img src="/logo.svg" /> */}
+        <p className="font-bold"><span className="text-3xl">🏜️</span><br></br>TripAI</p>
       </div>
 
       <div>
         {user ? (
           <div className="flex items-center gap-3">
             <a href="/create-trip">
-            <Button variant="outline" className="rounded-full">
+            <Button className="rounded-full bg-yellow-500 hover:bg-yellow-400 border border-gray-700 text-gray-700">
              Create Trip
             </Button>
             </a>
 
             <a href="/my-trip">
-            <Button variant="outline" className="rounded-full">
+            <Button variant="outline" className="rounded-full border border-gray-700 hover:bg-gray-200">
               My Trips
             </Button>
             </a>
@@ -81,7 +81,7 @@ const user = JSON.parse(localStorage.getItem("user"));
             <Popover>
               <PopoverTrigger>
               <img
-              src={user?.picture}
+              src={user?.picture?user?.picture:'placeholder.jpg'}
               className="h-[35px] w-[35px] rounded-full"
             />
               </PopoverTrigger>
@@ -96,15 +96,23 @@ const user = JSON.parse(localStorage.getItem("user"));
             </Popover>
           </div>
         ) : (
-          <Button onClick={()=>setOpenDialog(true)}>Sign In</Button>
+          <Button onClick={()=>setOpenDialog(true)} className="bg-gray-800">Sign In</Button>
         )}
       </div>
-      <Dialog open={openDialog}>
-      <DialogContent>
+      <Dialog open={openDialog} className="flex justify-center items-center w-full">
+      <DialogContent className="text-center">
         <DialogHeader>
-          <DialogTitle>Sign in to generate your trip</DialogTitle>
+          <DialogTitle>
+            <div className="flex flex-col gap-4 justify-center">
+            <p className="font-bold text-gray-800">
+              <span className="text-3xl">🏜️</span>TripAI</p>
+              
+             <p>Please sign in to continue</p> 
+            </div>
+          
+              </DialogTitle>
           <DialogDescription>
-            <img src="./logo.svg" alt="Logo" />
+          
 
             <Button
               disabled={loading}
